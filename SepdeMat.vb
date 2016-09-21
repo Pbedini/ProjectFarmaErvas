@@ -29,7 +29,8 @@ Public Class SepdeMat
         Txt_Separador.Text = StrUsuarioLogado
         Txt_Separador.Enabled = False
 
-
+        Me.LblVerificandoItem.Text = ""
+        Me.LblStatus.Text = ""
 
     End Sub
 
@@ -92,7 +93,7 @@ Public Class SepdeMat
                     DGridDadosNota.Rows(intLinha).Selected = True
                 End If
             End If
-            LblVerificandoItem.Text = "Separando item: " & intLinha + 1
+
         Catch ex As Exception
             MsgBox(ex.Message)
         Finally
@@ -121,6 +122,8 @@ Public Class SepdeMat
         Try
             If intLinha < Me.Txt_Item.Text Then
                 If Trim(Me.txt_GetProduto.Text) = Trim(DGridDadosNota.CurrentRow.Cells(1).Value) Then
+                    Me.LblStatus.Text = "Descricao do item em separacao: " & Trim(DGridDadosNota.CurrentRow.Cells(3).Value)
+                    LblVerificandoItem.Text = "Faltam: " & Txt_QuantidadeRestante.Text - Txt_QtdeLida.Text & " para separar."
                     List_Dados_Lidos.Items.Add(txt_GetProduto.Text & " " & Me.Txt_QtdeLida.Text)
                     Txt_QuantidadeRestante.Text = Txt_QuantidadeRestante.Text - Txt_QtdeLida.Text
                     txt_GetProduto.Text = ""
@@ -128,7 +131,6 @@ Public Class SepdeMat
                     Me.txt_GetProduto.Focus()
                     If Trim(Me.Txt_QuantidadeRestante.Text) = 0 Then
                         MsgBox("Item separado com sucesso!", MsgBoxStyle.Information, Title:="AVISO")
-
                         DGridDadosNota.CurrentCell = DGridDadosNota.Rows(intLinha).Cells(0)
                         DGridDadosNota.Rows(intLinha).DefaultCellStyle.BackColor = Color.YellowGreen
                         If intLinha <> Me.Txt_Item.Text Then
@@ -141,13 +143,12 @@ Public Class SepdeMat
                                 Txt_QuantidadeRestante.Text = ""
                             Else
                                 Txt_QuantidadeRestante.Text = Trim(DGridDadosNota.CurrentRow.Cells(2).Value)
-                                LblVerificandoItem.Text = "Separando item: " & intLinha + 1
                             End If
                         End If
                     End If
                 End If
             Else
-                MsgBox("Leitura de todos os itens realizada com sucesso. Deseja separar", MsgBoxStyle.Information, Title:="AVISO")
+                MsgBox("Leitura de todos os itens realizada com sucesso. ", MsgBoxStyle.OkOnly, Title:="AVISO")
             End If
         Catch ex As Exception
             MsgBox(ex.Message, MsgBoxStyle.Critical, Title:="ERRO")
@@ -178,6 +179,10 @@ Public Class SepdeMat
     End Sub
 
     Private Sub List_Dados_Lidos_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles List_Dados_Lidos.SelectedIndexChanged
+
+    End Sub
+
+    Private Sub LblVerificandoItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles LblVerificandoItem.Click
 
     End Sub
 End Class
