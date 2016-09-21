@@ -35,6 +35,7 @@ Partial Class SepdeMat
         Me.Txt_Item = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
+        Me.LblVerificandoItem = New System.Windows.Forms.Label()
         Me.DGridDadosNota = New System.Windows.Forms.DataGridView()
         Me.Btn_Separar = New System.Windows.Forms.Button()
         Me.Btn_FinalizarSep = New System.Windows.Forms.Button()
@@ -43,7 +44,7 @@ Partial Class SepdeMat
         Me.txt_GetProduto = New System.Windows.Forms.TextBox()
         Me.Txt_QtdeLida = New System.Windows.Forms.TextBox()
         Me.Txt_QuantidadeRestante = New System.Windows.Forms.TextBox()
-        Me.LblVerificandoItem = New System.Windows.Forms.Label()
+        Me.LblStatus = New System.Windows.Forms.Label()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         CType(Me.DGridDadosNota, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -150,6 +151,7 @@ Partial Class SepdeMat
         '
         'GroupBox2
         '
+        Me.GroupBox2.Controls.Add(Me.LblStatus)
         Me.GroupBox2.Controls.Add(Me.LblVerificandoItem)
         Me.GroupBox2.Controls.Add(Me.DGridDadosNota)
         Me.GroupBox2.Controls.Add(Me.Btn_Separar)
@@ -161,6 +163,16 @@ Partial Class SepdeMat
         Me.GroupBox2.TabIndex = 5
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Itens"
+        '
+        'LblVerificandoItem
+        '
+        Me.LblVerificandoItem.AutoSize = True
+        Me.LblVerificandoItem.ForeColor = System.Drawing.Color.Red
+        Me.LblVerificandoItem.Location = New System.Drawing.Point(123, 132)
+        Me.LblVerificandoItem.Name = "LblVerificandoItem"
+        Me.LblVerificandoItem.Size = New System.Drawing.Size(41, 13)
+        Me.LblVerificandoItem.TabIndex = 1
+        Me.LblVerificandoItem.Text = "Faltam:"
         '
         'DGridDadosNota
         '
@@ -228,15 +240,14 @@ Partial Class SepdeMat
         Me.Txt_QuantidadeRestante.Size = New System.Drawing.Size(162, 20)
         Me.Txt_QuantidadeRestante.TabIndex = 12
         '
-        'LblVerificandoItem
+        'LblStatus
         '
-        Me.LblVerificandoItem.AutoSize = True
-        Me.LblVerificandoItem.ForeColor = System.Drawing.Color.Red
-        Me.LblVerificandoItem.Location = New System.Drawing.Point(443, 121)
-        Me.LblVerificandoItem.Name = "LblVerificandoItem"
-        Me.LblVerificandoItem.Size = New System.Drawing.Size(94, 13)
-        Me.LblVerificandoItem.TabIndex = 1
-        Me.LblVerificandoItem.Text = "LblVerificandoItem"
+        Me.LblStatus.AutoSize = True
+        Me.LblStatus.Location = New System.Drawing.Point(122, 116)
+        Me.LblStatus.Name = "LblStatus"
+        Me.LblStatus.Size = New System.Drawing.Size(102, 13)
+        Me.LblStatus.TabIndex = 9
+        Me.LblStatus.Text = "Separando Material:"
         '
         'SepdeMat
         '
@@ -285,4 +296,5 @@ Partial Class SepdeMat
     Friend WithEvents Txt_QtdeLida As System.Windows.Forms.TextBox
     Friend WithEvents Txt_QuantidadeRestante As System.Windows.Forms.TextBox
     Friend WithEvents LblVerificandoItem As System.Windows.Forms.Label
+    Friend WithEvents LblStatus As System.Windows.Forms.Label
 End Class
